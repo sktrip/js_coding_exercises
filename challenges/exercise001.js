@@ -16,17 +16,34 @@ function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
   // Add your code here!
+      var vatAmount = originalPrice * (vatRate/100);
+      vatAmount = +vatAmount.toFixed(2);  
+  return originalPrice + vatAmount;
 }
+
 
 function getSalePrice(originalPrice, reduction) {
   if (originalPrice === undefined) throw new Error("originalPrice is required");
   if (reduction === undefined) throw new Error("reduction is required");
   // Add your code here!
+  var reductionAmount = originalPrice * (reduction/100);
+  reductionAmount = +reductionAmount.toFixed(2);
+  return originalPrice - reductionAmount;
 }
 
 function getMiddleCharacter(str) {
   if (str === undefined) throw new Error("str is required");
   // Add your code here!
+  var startPosition;
+  var length;
+    if(str.length % 2 == 1) {
+      startPosition = str.length / 2;
+      length = 1;
+  } else {
+      startPosition = str.length / 2 - 1;
+      length = 2;
+  }
+  return str.substring(startPosition, startPosition+length);
 }
 
 function reverseWord(word) {
