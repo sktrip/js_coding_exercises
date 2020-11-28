@@ -49,26 +49,62 @@ function getMiddleCharacter(str) {
 function reverseWord(word) {
   if (word === undefined) throw new Error("word is required");
   // Add your code here!
+  let reverseWord = '';
+    for (let letter of word ) {
+      reverseWord = letter + reverseWord;
+    }
+  return reverseWord;
 }
 
 function reverseAllWords(words) {
   if (words === undefined) throw new Error("words is required");
   // Add your code here!
+  var reverseWords = [] ;
+  for (let word of words) {
+      reverseWords.push(reverseWord(word)) ;
+}return reverseWords;    
 }
 
 function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
   // Add your code here!
-}
+  var count = 0;
+  for(var index=0; index < users.length; index++) {
+    var user = users[index];
+      if (user.type == 'Linux') {
+        count += 1;
+      }
+    }
+    return count;
+  }
 
 function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
   // Add your code here!
+  var total = 0;
+  for(var index=0; index<scores.length; index++) {
+    total += scores[index];
+  }
+  var meanScore = total/(scores.length);
+  meanScore = +meanScore.toFixed(2);
+  return meanScore;
 }
 
 function simpleFizzBuzz(n) {
   if (n === undefined) throw new Error("n is required");
   // Add your code here!
+  if((n%3 == 0) && (n%5 ==0)) {
+      return 'fizzbuzz';
+    }
+  else if(n%3 ==0)  {
+    return 'fizz'; 
+  }     
+  else if (n%5 == 0) {
+    return 'buzz';
+  }
+  else {
+    return n;
+  }
 }
 
 module.exports = {
