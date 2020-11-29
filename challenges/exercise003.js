@@ -53,6 +53,21 @@ function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
   // Your code here!
+  var result = [];
+  for (var i = 0; i < arr1.length; i++) {
+    for (var j = 0; j < arr2.length; j++) {     
+        if (arr1[i] == arr2[j]) {
+          if (result.includes(arr1[i])) {
+               continue;
+             }
+             else 
+            { 
+             result.push(arr1[i]); 
+            }
+        }
+      }    
+  }    
+  return result.sort(); 
 }
 
 module.exports = {
