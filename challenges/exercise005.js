@@ -51,21 +51,30 @@ const findNeedle = (haystack, searchTerm) => {
   if (searchTerm === undefined) throw new Error("searchTerm is required");
   // Your code here!
   var flag;
-  for (var j=0; j< haystack.length ; j++)  {
-    var item = haystack[j]
-    if(haystack[j].includes(searchTerm)) {
-      flag= true;
-      break;      
+  searchString = searchTerm.toLocaleLowerCase();
+    for (var j in haystack)  {
+    var item = haystack[j];
+    if(typeof item == 'object') {
+      findNeedle(item,searchString);   
+    } 
+    if(item.indexOf(searchString)>-1) {
+      flag = true;
     }
     else {
-      flag = false;
-    } 
+      flag = false 
+          }
   } return flag;
 };
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+  // Your code here!(
+  var resultSet = {};
+  var splitWords = (str.toLowerCase().replace(/[^\w\s]/gi, "")).split(' ');
+  splitWords.forEach(function(el, i ,arr) {
+     resultSet[el] = resultSet[el] ? ++resultSet[el]: 1;
+          });
+  return resultSet;
 };
 
 module.exports = {
