@@ -77,9 +77,9 @@ const findNeedle = (haystack, searchTerm) => {
     if(item.indexOf(searchString)>-1) {
       flag = true;
     }
-    else {
+    else 
       flag = false 
-          }
+          
   } return flag;
 };
 
