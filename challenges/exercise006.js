@@ -6,6 +6,12 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
+  var result=0 ;
+  for (var i=0; i<arr.length; i++) {
+    if(arr[i]%3 == 0 || arr[i]%5 ==0) {
+      result += arr[i];
+    }
+  }return result;
 };
 
 /**
@@ -15,15 +21,21 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
-};
+  var reg = /^[C,G,T,A]+$/i;
+  return reg.test(str);
+}; 
+
 
 /**
  * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
  * @param {String} str
  * @returns {String}
  */
-const getComplementaryDNA = str => {
+const  getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+ var characters = {'A':'T','C':'G','T':'A','G':'C'};
+  var reg = str.replace(/[ATCG]/g,m=>characters[m]);
+  return reg;
 };
 
 /**
@@ -33,6 +45,10 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  if(n<2) return false;
+  for(var i=0; i<=Math.sqrt(n); i++) {
+    if(n%i ==0) return false;
+  } return true;
 };
 
 /**

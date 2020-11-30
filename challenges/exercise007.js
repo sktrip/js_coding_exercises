@@ -4,6 +4,13 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
+    var sum = 0;
+    while (n) {
+        var digits = n % 10;
+        sum += digits;
+        n = (n - digits) / 10;
+    }
+    return sum;
 };
 
 /**
