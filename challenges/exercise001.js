@@ -68,7 +68,7 @@ function countLinuxUsers(users) {
   if (users === undefined) throw new Error("users is required");
 
   let count = 0;
-  for (var index = 0; index < users.length; index++) {
+  for (let index = 0; index < users.length; index++) {
     let user = users[index];
     if (user.type == 'Linux') {
       count += 1;
@@ -81,7 +81,7 @@ function getMeanScore(scores) {
   if (scores === undefined) throw new Error("scores is required");
 
   let total = 0;
-  for (var index = 0; index < scores.length; index++) {
+  for (let index = 0; index < scores.length; index++) {
     total += scores[index];
   }
   let meanScore = total / (scores.length);
