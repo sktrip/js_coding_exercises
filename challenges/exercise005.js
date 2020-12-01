@@ -1,23 +1,21 @@
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
-  // Your code here!
-  var searchVal = nums.indexOf(n);
-  if(searchVal == null || searchVal == -1 || searchVal== nums.length-1) {
+  let searchVal = nums.indexOf(n);
+  if (searchVal == null || searchVal == -1 || searchVal == nums.length - 1) {
     return null;
   }
   else {
-  return nums[searchVal+1]; 
+    return nums[searchVal + 1];
   }
 };
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
-  var countOfZero = 0;
-  var countOfOne = 0;
-    
-  for (var i = 0, length = str.length; i < length; i++) {
+  let countOfZero = 0;
+  let countOfOne = 0;
+
+  for (let i = 0, length = str.length; i < length; i++) {
     if (str[i] === '0') {
       countOfZero++;
     }
@@ -25,7 +23,6 @@ const count1sand0s = str => {
       countOfOne++;
     }
   }
-    
   return {
     '0': countOfZero,
     '1': countOfOne
@@ -34,63 +31,59 @@ const count1sand0s = str => {
 
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
-  // Your code here!
-  var reversedNumber = parseFloat(n.toString().split('').reverse().join('')) * Math.sign(n)
-  return  reversedNumber;
+  let reversedNumber = parseFloat(n.toString().split('').reverse().join('')) * Math.sign(n)
+  return reversedNumber;
 };
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  // Your code here!
-  var sum =0 ;
-  for(var i=0; i<arrs.length ;i++) {
-    var arr = arrs[i];
-    for (var j=0; j<arr.length ;j++) {         
-        sum += arr[j];
+  let sum = 0;
+  for (let i = 0; i < arrs.length; i++) {
+    let arr = arrs[i];
+    for (let j = 0; j < arr.length; j++) {
+      sum += arr[j];
     }
-  }return sum;
+  } return sum;
 };
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  // Your code here!
-  if(arr.length <2) {
+  if (arr.length < 2) {
     return arr;
   }
   else {
-  [arr[0], arr[(arr.length)-1]] = [arr[(arr.length)-1], arr[0]];
-  return arr;
+    [arr[0], arr[(arr.length) - 1]] = [arr[(arr.length) - 1], arr[0]];
+    return arr;
   }
 };
 
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  // Your code here!
-  var flag;
-  var searchString = searchTerm.toLocaleLowerCase();
-    for (var j in haystack)  {
-    var item = haystack[j];
-    if(typeof item == 'object') {
-      findNeedle(item,searchString);   
-    } 
-    if(item.indexOf(searchString)>-1) {
-      flag = true;
+  let flag;
+  let searchString = searchTerm.toLocaleLowerCase();
+  for (let j in haystack) {
+    let item = haystack[j];
+    if (typeof item == 'string') {
+      let itemLowerCase = item.toLocaleLowerCase();
+      if (itemLowerCase.includes(searchString)) {
+        flag = true;
+        break;
+      }
+      else {
+        flag = false;
+      }
     }
-    else 
-      flag = false 
-          
   } return flag;
 };
 
 const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!(
-  var resultSet = {};
-  var splitWords = (str.toLowerCase().replace(/[^\w\s]/gi, "")).split(' ');
-  splitWords.forEach(function(el, i ,arr) {
-     resultSet[el] = resultSet[el] ? ++resultSet[el]: 1;
-          });
+  let resultSet = {};
+  let splitWords = (str.toLowerCase().replace(/[^\w\s]/gi, "")).split(' ');
+  splitWords.forEach(function (el) {
+    resultSet[el] = resultSet[el] ? ++resultSet[el] : 1;
+  });
   return resultSet;
 };
 
