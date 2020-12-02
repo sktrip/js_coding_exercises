@@ -96,7 +96,7 @@ const areWeCovered = (staff, day) => {
     if (staff[i].rota.includes(day)) {
       counter++;
     }
-  } return counter == 3;
+  } return counter >= 3;
 };
 
 module.exports = {
