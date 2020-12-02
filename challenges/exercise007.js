@@ -4,13 +4,13 @@
  */
 const sumDigits = n => {
   if (n === undefined) throw new Error("n is required");
-    var sum = 0;
-    while (n) {
-        var digits = n % 10;
-        sum += digits;
-        n = (n - digits) / 10;
-    }
-    return sum;
+  let sum = 0;
+  while (n) {
+    let digits = n % 10;
+    sum += digits;
+    n = (n - digits) / 10;
+  }
+  return sum;
 };
 
 /**
@@ -24,15 +24,16 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
-var resultSet = [];
-while(end>=start) {
-        resultSet.push(start);
-      start += step;     
-} return resultSet;
+  if(step == undefined) step =1;
+  let resultSet = [];
+  while (end >= start) {
+    resultSet.push(start);
+    start += step;
+  } return resultSet;
 };
 
 /**
- * This function takes an array of user objects and their usage in minutes of various applications. The format of the data should be as follows:
+ * This function takes an array of user objects and their usage in minutes of letious applications. The format of the data should be as follows:
  * [
  *  {
  *    username: "beth_1234",
@@ -63,6 +64,24 @@ while(end>=start) {
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  let usersArray =[];
+  let sum =0;
+  for(let i =0; i<users.length; i++) {
+      let user = users[i].screenTime;
+      for(let j=0; j<user.length; j++) {
+        if( user[j].date == date) {
+            let userUsage = user[j].usage
+            for (let el in userUsage) {
+                if( userUsage.hasOwnProperty( el ) ) {
+                      console.log(el.)
+                      sum += parseFloat( userUsage[el] );
+                   }
+             }
+            if(sum>100) {  
+                usersArray.push(users[i].username); }
+        }                               
+      } 
+}return usersArray;
 };
 
 /**
@@ -77,8 +96,8 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
-  var splitString = hexStr.match(/.{1,2}/g);
-  var stringRGB = [ parseInt(splitString[0],16), parseInt(splitString[1],16), parseInt(splitString[2],16) ];
+  let splitString = hexStr.match(/.{1,2}/g);
+  let stringRGB = [parseInt(splitString[0], 16), parseInt(splitString[1], 16), parseInt(splitString[2], 16)];
   return stringRGB;
 };
 
