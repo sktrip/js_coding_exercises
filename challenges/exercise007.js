@@ -24,7 +24,7 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
-  if(step == undefined) step =1;
+  step = (step == null ? 1 : step);
   let resultSet = [];
   while (end >= start) {
     resultSet.push(start);
@@ -96,8 +96,8 @@ const getScreentimeAlertList = (users, date) => {
  */
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
-  let splitString = hexStr.match(/.{1,2}/g);
-  let stringRGB = [parseInt(splitString[0], 16), parseInt(splitString[1], 16), parseInt(splitString[2], 16)];
+  let splitString = hexStr.substring(1,).match(/.{1,2}/g);
+  let stringRGB = ["rgb(",parseInt(splitString[0], 16),"," ,parseInt(splitString[1], 16),"," ,parseInt(splitString[2],16),")"].join("");
   return stringRGB;
 };
 
