@@ -18,11 +18,8 @@ function getBusNumbers(people) {
 function countSheep(arr) {
   if (arr === undefined) throw new Error("arr is required");
   let sheepCount = 0;
-  for (let index = 0; index < arr.length; index++) {
-    if (arr[index] == 'sheep') {
-      sheepCount += 1;
-    }
-  } return sheepCount;
+  Object.values(arr).forEach(val => { sheepCount = (val=='sheep') ? sheepCount+=1: sheepCount }); 
+  return sheepCount;
 }
 
 function hasMPostCode(person) {
