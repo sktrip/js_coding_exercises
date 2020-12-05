@@ -1,10 +1,8 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
   let smallNumbers = [];
-  for (let index = 0; index < nums.length; index++) {
-    if (nums[index] < 1) {
-      smallNumbers.push(nums[index]);
-    }
+  for (let index in nums) {
+    if (nums[index] < 1) smallNumbers.push(nums[index]);
   } return smallNumbers;
 }
 
@@ -12,7 +10,7 @@ function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
   let searchString = [];
-  for (let i = 0; i < names.length; i++) {
+  for (let i in names) {
     if (names[i].startsWith(char)) {
       searchString.push(names[i]);
     }
@@ -22,9 +20,9 @@ function findNamesBeginningWith(names, char) {
 function findVerbs(words) {
   if (!words) throw new Error("words is required");
   let verbsInWords = [];
-  for (let i = 0; i < words.length; i++) {
-    if (words[i].substring(0, 3) == 'to ') {
-      verbsInWords.push(words[i]);
+  for (let word in words) {
+    if (words[word].substring(0, 3) == 'to ') {
+      verbsInWords.push(words[word]);
     }
   } return verbsInWords;
 }
@@ -32,7 +30,7 @@ function findVerbs(words) {
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
   let integerNumbers = [];
-  for (let i = 0; i < nums.length; i++) {
+  for (let i in nums) {
     if (Number.isInteger(nums[i])) {
       integerNumbers.push(nums[i]);
     }
@@ -42,7 +40,7 @@ function getIntegers(nums) {
 function getCities(users) {
   if (!users) throw new Error("users is required");
   let userCities = [];
-  for (let i = 0; i < users.length; i++) {
+  for (let i in users) {
     let dataInUser = users[i].data;
     userCities.push(dataInUser.city.displayName);
   }
@@ -52,7 +50,7 @@ function getCities(users) {
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
   let sqrtOfNumber = [];
-  for (let i = 0; i < nums.length; i++) {
+  for (let i in nums) {
     sqrtOfNumber.push(+(Math.sqrt(nums[i])).toFixed(2));
   } return sqrtOfNumber;
 }
@@ -62,7 +60,7 @@ function findSentencesContaining(sentences, str) {
   if (!str) throw new Error("str is required");
   let resultSet = [];
   let searchString = str.toLocaleLowerCase();
-  for (let i = 0; i < sentences.length; i++) {
+  for (let i in sentences) {
     let searchSentence = sentences[i].toLocaleLowerCase();
     if (searchSentence.includes(searchString)) {
       resultSet.push(sentences[i]);
@@ -73,10 +71,10 @@ function findSentencesContaining(sentences, str) {
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
   let longestSides = [];
-  for (let i = 0; i < triangles.length; i++) {
+  for (let i in triangles) {
     let triangleSides = triangles[i];
     let longestSide = 0;
-    for (let j = 0; j < triangleSides.length; j++) {
+    for (let j in triangleSides) {
       if (longestSide < triangleSides[j]) {
         longestSide = triangleSides[j];
       }
