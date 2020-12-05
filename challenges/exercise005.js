@@ -2,55 +2,38 @@ const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
   let searchVal = nums.indexOf(n);
-  if (searchVal == null || searchVal == -1 || searchVal == nums.length - 1) {
-    return null;
-  }
-  else {
-    return nums[searchVal + 1];
-  }
+  return ((searchVal == null || searchVal == -1 || searchVal == nums.length - 1) ? null : nums[searchVal + 1]);
 };
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
   let countOfZero = 0;
   let countOfOne = 0;
-
-  for (let i = 0, length = str.length; i < length; i++) {
-    if (str[i] === '0') {
-      countOfZero++;
-    }
-    else {
-      countOfOne++;
-    }
-  }
+  for (let i in str) { str[i] == '0' ? countOfZero++ : countOfOne++ }
   return {
     '0': countOfZero,
     '1': countOfOne
   };
-};
+}
+
 
 const reverseNumber = n => {
   if (n === undefined) throw new Error("n is required");
-  let reversedNumber = parseFloat(n.toString().split('').reverse().join('')) * Math.sign(n)
-  return reversedNumber;
+  return  parseFloat(n.toString().split('').reverse().join('')) * Math.sign(n);
 };
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
   let sum = 0;
-  for (let i = 0; i < arrs.length; i++) {
+  for (let i in arrs) {
     let arr = arrs[i];
-    for (let j = 0; j < arr.length; j++) {
-      sum += arr[j];
-    }
+    for (let j in arr) { sum += arr[j]; }
   } return sum;
 };
 
 const arrShift = arr => {
   if (arr === undefined) throw new Error("arr is required");
-  if (arr.length < 2) {
-    return arr;
-  }
+  if (arr.length < 2) return arr;
   else {
     [arr[0], arr[(arr.length) - 1]] = [arr[(arr.length) - 1], arr[0]];
     return arr;
@@ -70,9 +53,7 @@ const findNeedle = (haystack, searchTerm) => {
         flag = true;
         break;
       }
-      else {
-        flag = false;
-      }
+      else flag = false;
     }
   } return flag;
 };
@@ -81,9 +62,7 @@ const getWordFrequencies = str => {
   if (str === undefined) throw new Error("str is required");
   let resultSet = {};
   let splitWords = (str.toLowerCase().replace(/[^\w\s]/gi, "")).split(' ');
-  splitWords.forEach(function (el) {
-    resultSet[el] = resultSet[el] ? ++resultSet[el] : 1;
-  });
+  splitWords.forEach(function (el) { resultSet[el] = resultSet[el] ? ++resultSet[el] : 1; });
   return resultSet;
 };
 
