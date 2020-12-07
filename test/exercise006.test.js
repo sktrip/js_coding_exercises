@@ -3,8 +3,8 @@ const {
     isValidDNA,
     getComplementaryDNA,
     isItPrime,
-    // createMatrix,
-    // areWeCovered
+    createMatrix,
+    areWeCovered
 } = require("../challenges/exercise006");
 
 describe("sumMultiples", () => {
@@ -20,6 +20,7 @@ describe("sumMultiples", () => {
     test("returns 0 if the array does not contain multiples of 3 or 5", () => {
         expect(sumMultiples([1, 2, 4, 8, 1, 7])).toBe(0);
     });
+});
 
 
     describe("isValidDNA", () => {
@@ -54,4 +55,48 @@ describe("sumMultiples", () => {
         });
 
     });
-});     
+
+    describe("createMatrix", () => {
+        test("returns an  array of n arrays, each filled with n items", () => {
+            expect(createMatrix(3, "foo")).toEqual([
+                ["foo", "foo", "foo"],
+                ["foo", "foo", "foo"],
+                ["foo", "foo", "foo"]
+            ]);
+        });
+
+        test("returns a 2*2 Matrix with the word 'apple' ", () => {
+            expect(createMatrix(2, "apple")).toEqual([
+                ["apple", "apple"],
+                ["apple", "apple"]
+            ]);
+        });
+
+        test("returns an array with 1 item with word ' fun' ", () => {
+            expect(createMatrix(1, "fun")).toEqual([["fun"]]);
+        });
+
+    });
+
+    describe("areWeCovered", () => {
+        test("returns true if there are atleast 3 staff members available to work on the given day", () => {
+           const staff =  [
+                { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+                { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+                { name: "Carol", rota: ["Monday", "Tuesday", "Friday"]} ,
+                { name: "Karen", rota: ["Monday", "Tuesday", "Friday"]} 
+            ]
+          expect(areWeCovered(staff,"Monday")).toBe(true);
+        });
+
+        test("returns false if there are not enough(<3) members available to work on the given day", () => {
+            const staff =  [
+                 { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+                 { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+                 { name: "Carol", rota: ["Monday", "Tuesday", "Friday"]} ,
+                 { name: "Karen", rota: ["Monday", "Tuesday", "Friday"]} 
+             ]
+           expect(areWeCovered(staff,"Saturday")).toBe(false);
+         });
+    });
+      
