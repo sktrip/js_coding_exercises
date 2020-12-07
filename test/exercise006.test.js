@@ -45,6 +45,13 @@ describe("sumMultiples", () => {
             test("returns true if the given input is a prime number", () => {
                 expect(isItPrime(2)).toEqual(true);
             });
+        });
+
+        describe("isItPrime", () => {
+            test("returns false if the given input is not a prime number", () => {
+                expect(isItPrime(4)).toEqual(false);
             });
-        }); 
-    });     
+        });
+
+    });
+});     
