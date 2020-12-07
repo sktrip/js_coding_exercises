@@ -7,10 +7,8 @@
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
   let result = 0;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 3 == 0 || arr[i] % 5 == 0) {
-      result += arr[i];
-    }
+  for (let i in arr) {
+    if (arr[i] % 3 == 0 || arr[i] % 5 == 0) { result += arr[i]; }
   } return result;
 };
 
@@ -34,8 +32,7 @@ const isValidDNA = str => {
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
   let characters = { 'A': 'T', 'C': 'G', 'T': 'A', 'G': 'C' };
-  let reg = str.replace(/[ATCG]/g, m => characters[m]);
-  return reg;
+  return str.replace(/[ATCG]/g, m => characters[m]);
 };
 
 /**
@@ -46,10 +43,12 @@ const getComplementaryDNA = str => {
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
   if (n < 2) return false;
-  for (let i = 0; i < n; i++) {
+  //   if(n==2) return true;
+  //   if (n % 2 == 0) return false;
+  for (var i = 2; i <= Math.sqrt(n); ++i) 
     if (n % i == 0) return false;
-  } return true;
-};
+  return true;
+}
 
 /**
  * This function should receive a number and return an array of n arrays, each filled with n items. The parameter "fill" should be used as the filler of the arrays. For example, given parameters 3 and "foo" the resulting matrix should be:
@@ -66,9 +65,7 @@ const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
   let arrayMatrix = new Array(n);
-  for (let i = 0; i < n; i++) {
-    arrayMatrix[i] = (new Array(n)).fill(fill);
-  }
+  for (let i in n) { arrayMatrix[i] = (new Array(n)).fill(fill); }
   return arrayMatrix;
 };
 
@@ -90,10 +87,8 @@ const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
   let counter = 0;
-  for (let i = 0; i < staff.length; i++) {
-    if (staff[i].rota.includes(day)) {
-      counter++;
-    }
+  for (let i in staff) {
+    if (staff[i].rota.includes(day)) counter++;
   } return counter >= 3;
 };
 
