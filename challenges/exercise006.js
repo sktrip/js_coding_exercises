@@ -65,7 +65,7 @@ const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
   let arrayMatrix = new Array(n);
-  for (let i in n) { arrayMatrix[i] = (new Array(n)).fill(fill); }
+  for (let i=0; i<n; i++) { arrayMatrix[i] = (new Array(n)).fill(fill); }
   return arrayMatrix;
 };
 
