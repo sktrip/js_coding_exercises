@@ -24,7 +24,7 @@ const sumDigits = n => {
 const createRange = (start, end, step) => {
   if (start === undefined) throw new Error("start is required");
   if (end === undefined) throw new Error("end is required");
-  step = (step == null ? 1 : step);
+  step = step || 1;
   let resultSet = [];
   while (end >= start) {
     resultSet.push(start);
@@ -65,24 +65,15 @@ const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
   let usersArray =[];
-  let sum =0;
-  for(let i =0; i<users.length; i++) {
-      let user = users[i].screenTime;
-      for(let j=0; j<user.length; j++) {
-        if( user[j].date == date) {
-            let userUsage = user[j].usage
-            for (let el in userUsage) {
-                if( userUsage.hasOwnProperty( el ) ) {
-                      console.log(el.)
-                      sum += parseFloat( userUsage[el] );
-                   }
-             }
-            if(sum>100) {  
-                usersArray.push(users[i].username); }
-        }                               
-      } 
-}return usersArray;
-};
+    users.forEach(user => {
+      users.screenTime.forEach(day => {
+        if((day.date == date) && Object.values(day.usage).reduce((total_usage, usage) => total_usage+usage) > 100)
+          usersArray.push(user.username)
+      })
+    })
+    return usersArray;
+  };
+  
 
 /**
  * This function will receive a hexadecimal color code in the format #FF1133. A hexadecimal code is a number written in hexadecimal notation, i.e. base 16. If you want to know more about hexadecimal notation:
@@ -97,8 +88,7 @@ const getScreentimeAlertList = (users, date) => {
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
   let splitString = hexStr.substring(1,).match(/.{1,2}/g);
-  let stringRGB = ["rgb(",parseInt(splitString[0], 16),"," ,parseInt(splitString[1], 16),"," ,parseInt(splitString[2],16),")"].join("");
-  return stringRGB;
+  return ["rgb(",parseInt(splitString[0], 16),"," ,parseInt(splitString[1], 16),"," ,parseInt(splitString[2],16),")"].join("");;
 };
 
 /**
@@ -113,6 +103,7 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+
 };
 
 module.exports = {
