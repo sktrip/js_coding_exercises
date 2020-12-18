@@ -101,10 +101,77 @@ const hexToRGB = hexStr => {
  * The function should return "X" if player X has won, "0" if the player 0 has won, and null if there is currently no winner.
  * @param {Array} board
  */
-const findWinner = board => {
+var findWinner = board => {
   if (board === undefined) throw new Error("board is required");
-
-};
+  let count ;
+  let winnerHorizontal ;
+  let prevVal;
+  let winnerVertical;
+  let winnerDiagonal;
+  let winnerCross;
+  for(let i=0; i< 3 ; i++) {
+      count = 0;
+      prevVal = board[i][0];
+      for (let j =0;j< 3; j++) {
+        if (board[i][j] == prevVal) { count++; }
+        prevVal = board[i][j];
+           if (count == 3) { 
+           winnerHorizontal = prevVal; 
+           return winnerHorizontal;         
+          }       
+      } 
+    } 
+    if (winnerHorizontal == null) {
+      for(let i=0; i< 3 ; i++) {
+        count = 0;
+        prevVal = board[i][0];
+        for (let j =0;j< 3; j++) {
+          if (board[j][i] == prevVal) { count++; }
+          prevVal = board[j][i];
+             if (count == 3) { 
+              winnerVertical = prevVal; 
+             return winnerVertical;         
+            } 
+        } 
+      } 
+    }
+    if( winnerHorizontal == null && winnerVertical ==null) {
+      count = 0;
+      prevVal = board[0][0];
+      for(let i=0; i< 3 ; i++) {
+             
+         for (let j =0;j< 3; j++) {
+           if( (i==j) && (board[i][j] == prevVal)) 
+            { count++; 
+              prevVal = board[i][j];
+          if (count == 3) { 
+             winnerDiagonal = prevVal; 
+            
+            return winnerDiagonal;         
+           } }
+        }
+    } 
+  } 
+   if( winnerHorizontal == null && winnerVertical ==null && winnerDiagonal ==null ) {
+      count = 0;
+      prevVal = board[0][2];
+      for(let i=0; i< 3 ; i++) {
+       
+        for (let j =0;j< 3; j++) {
+           if( board[i][j] == prevVal) { 
+                count++;  
+                prevVal = board[i][j]; 
+                  if (count == 3) { 
+                  winnerCross = prevVal; 
+                  console.log('inside cross count check');
+                  return winnerCross;         
+                  }
+                 }
+               }
+        } 
+     }
+};          
+    
 
 module.exports = {
   sumDigits,
