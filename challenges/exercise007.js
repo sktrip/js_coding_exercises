@@ -156,22 +156,17 @@ var findWinner = board => {
       count = 0;
       prevVal = board[0][2];
       for(let i=0; i< 3 ; i++) {
-       
-        for (let j =0;j< 3; j++) {
-           if( board[i][j] == prevVal) { 
+           if( board[i][2-i] == prevVal) { 
                 count++;  
-                prevVal = board[i][j]; 
+                prevVal = board[i][2-i]; 
                   if (count == 3) { 
                   winnerCross = prevVal; 
-                  console.log('inside cross count check');
                   return winnerCross;         
                   }
                  }
                }
-        } 
-     }
-};          
-    
+  } return null;
+  };          
 
 module.exports = {
   sumDigits,
