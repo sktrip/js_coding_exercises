@@ -8,7 +8,9 @@ const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
   let result = 0;
   for (let i in arr) {
-    if (arr[i] % 3 == 0 || arr[i] % 5 == 0) { result += arr[i]; }
+    if (arr[i] % 3 == 0 || arr[i] % 5 == 0) {
+         result += arr[i];
+    }
   } return result;
 };
 
@@ -63,7 +65,9 @@ const createMatrix = (n, fill) => {
   if (n === undefined) throw new Error("n is required");
   if (fill === undefined) throw new Error("fill is required");
   let arrayMatrix = new Array(n);
-  for (let i=0; i<n; i++) { arrayMatrix[i] = (new Array(n)).fill(fill); }
+  for (let i=0; i<n; i++) {
+     arrayMatrix[i] = (new Array(n)).fill(fill);
+    }
   return arrayMatrix;
 };
 
@@ -85,9 +89,10 @@ const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
   let counter = 0;
-  for (let i in staff) {
-    if (staff[i].rota.includes(day)) counter++;
-  } return counter >= 3;
+  staff.forEach(person => { if (person.rota.includes(day))
+                                counter++;
+                          })
+  return counter >= 3;
 };
 
 module.exports = {

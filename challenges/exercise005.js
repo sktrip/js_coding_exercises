@@ -24,11 +24,7 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  let sum = 0;
-  for (let i in arrs) {
-    let arr = arrs[i];
-    for (let j in arr) { sum += arr[j]; }
-  } return sum;
+  return arrs.flat().reduce((a, b) => a + b)
 };
 
 const arrShift = arr => {
@@ -43,19 +39,9 @@ const arrShift = arr => {
 const findNeedle = (haystack, searchTerm) => {
   if (haystack === undefined) throw new Error("haystack is required");
   if (searchTerm === undefined) throw new Error("searchTerm is required");
-  let flag;
-  let searchString = searchTerm.toLocaleLowerCase();
-  for (let j in haystack) {
-    let item = haystack[j];
-    if (typeof item == 'string') {
-      let itemLowerCase = item.toLocaleLowerCase();
-      if (itemLowerCase.includes(searchString)) {
-        flag = true;
-        break;
-      }
-      else flag = false;
-    }
-  } return flag;
+  const searchString = searchTerm.toLocaleLowerCase();
+  return Object.keys(haystack).some(property =>
+    (typeof haystack[property] === "string") && haystack[property].toLowerCase().includes(searchString))
 };
 
 const getWordFrequencies = str => {
